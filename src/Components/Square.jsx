@@ -6,7 +6,7 @@ import React from 'react';
 
 const Square = (props) => {
 	return (
-		<button>{props.value}</button>
+		<button onClick={props.onClick}>{props.value}</button>
 	)
 } 
 
