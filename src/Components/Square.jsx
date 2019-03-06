@@ -4,5 +4,10 @@
 
 import React from 'react';
 
-export default () => null;
+const Square = () => {
+	return (
+		<button></button>
+	)
+} 
 
+export default Square;
