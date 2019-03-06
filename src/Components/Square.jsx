@@ -4,9 +4,9 @@
 
 import React from 'react';
 
-const Square = () => {
+const Square = (props) => {
 	return (
-		<button></button>
+		<button>{props.value}</button>
 	)
 } 
 
