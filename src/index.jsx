@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Board from './Components/Board';
+import Game from './Components/Game';
 
 
 // ========================================
 
 ReactDOM.render(
-  <Board />,
+  <Game />,
   document.getElementById('root')
 );
