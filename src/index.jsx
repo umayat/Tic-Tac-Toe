@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Square from './Components/Square';
+import Board from './Components/Board';
 
 
 // ========================================
 
 ReactDOM.render(
-  <Square />,
+  <Board />,
   document.getElementById('root')
 );

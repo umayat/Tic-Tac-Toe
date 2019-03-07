@@ -3,10 +3,13 @@
 */
 
 import React from 'react';
+import './Square.css';
 
 const Square = (props) => {
 	return (
-		<button onClick={props.onClick}>{props.value}</button>
+		<button className="square" onClick={props.onClick}>
+			{props.value}
+		</button>
 	)
 } 
 
