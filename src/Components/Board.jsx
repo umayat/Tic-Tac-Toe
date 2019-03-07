@@ -5,11 +5,11 @@
 import React from 'react';
 import Square from './Square';
 
-const Board = () => {
+const Board = (props) => {
 	
 	let renderSquare = () => {
     	return (
-      	<Square />
+      	<Square onClick={ props.onClick }/>
     	);
   	}
 
