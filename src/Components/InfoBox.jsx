@@ -18,7 +18,7 @@ const InfoBox = (props) => {
    return (
    	<center>
 	   	<ol>{moves}</ol>
-	   	<button className="resetBtn">Reset Game</button>
+	   	<button className="resetBtn" onClick={props.onReset}>Reset Game</button>
 	   </center>
    )
 }

@@ -48,6 +48,13 @@ class Game extends React.Component {
 	   })
   	}
 
+  	/*
+   	Handles complete game reset. Resets initial state.
+  	*/
+  	handleReset() {
+ 
+  	}
+
 	/*
 		Calculate if there is winner.
 	*/
@@ -93,6 +100,7 @@ class Game extends React.Component {
 	        		<InfoBox
 		            history={history}
 		            onClick={ (i) => this.handleTimeTravel(i) }
+		            onReset={ () => this.handleReset() }
           		/>
           	</div>
 	      </div>
