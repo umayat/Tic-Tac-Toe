@@ -9,26 +9,35 @@ class Game extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			history: [],
-			squares: Array(9).fill(null),
-			next: 'X'
+			history: [{
+	        squares: Array(9).fill(null)
+	      }],
+			next: 'X',
+			stepNumber: 0
 		}
 	}
 
 	handleClick(i) {
-		const squares = this.state.squares.slice();
-		squares[i] = this.state.next;
+		const history = this.state.history.slice(0, this.state.stepNumber + 1);
+	   const current = history[history.length - 1];
+	   const squares = current.squares.slice();  //shallow copy
+
+	   squares[i] = this.state.next;
 
 		this.setState({
-			squares: squares,
-			next: (this.state.next === 'X') ? 'O' : 'X'
+			history: history.concat([ {squares: squares} ]),  // Could use Array.push(), but original array will be mutated.
+      	next: (this.state.next === 'X') ? 'O' : 'X',
+      	stepNumber: history.length
 		})
 	}
 
 	render() {
+		const history = this.state.history;
+    	const current = history[this.state.stepNumber];
+
 		return (
 			<Board 
-				squares={this.state.squares} 
+				squares={current.squares} 
 				onClick={ (i) => this.handleClick(i) } 
 			/>
 		)
