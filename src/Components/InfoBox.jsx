@@ -15,7 +15,10 @@ const InfoBox = (props) => {
    })
 
    return (
-   	<ol>{moves}</ol>
+   	<center>
+	   	<ol>{moves}</ol>
+	   	<button className="resetBtn">Reset Game</button>
+	   </center>
    )
 }
 
