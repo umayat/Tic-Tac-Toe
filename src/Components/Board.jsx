@@ -8,28 +8,31 @@ import './Board.css';
 
 const Board = (props) => {
 	
-	let renderSquare = () => {
+	let renderSquare = (i) => {
     	return (
-      	<Square onClick={ props.onClick }/>
+      	<Square 
+      		value={props.squares[i]}
+      		onClick={ () => props.onClick(i) }
+      	/>
     	);
   	}
 
  	return (
 	   <div>
 	     	<div className="board-row">
-	       	{renderSquare()}
-	       	{renderSquare()}
-	       	{renderSquare()}
+	       	{renderSquare(0)}
+	       	{renderSquare(1)}
+	       	{renderSquare(2)}
 	     	</div>
 	     	<div className="board-row">
-	       	{renderSquare()}
-	       	{renderSquare()}
-	       	{renderSquare()}
+	       	{renderSquare(3)}
+	       	{renderSquare(5)}
+	       	{renderSquare(6)}
 	     	</div>
 	     	<div className="board-row">
-	       	{renderSquare()}
-	       	{renderSquare()}
-	       	{renderSquare()}
+	       	{renderSquare(7)}
+	       	{renderSquare(8)}
+	       	{renderSquare(9)}
 	     	</div>
 	   </div>
  	);

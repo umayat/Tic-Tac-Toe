@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Board from './Board';
 
 describe('rendering', () => {
 	let wrapper;	
 	beforeEach( () => {
-		wrapper = shallow(<Board />)
+		wrapper = shallow(<Board squares={Array(9).fill(null)} />)
 	})
 
 	it('should render 9 <Square /> components', () => {
@@ -19,7 +19,7 @@ describe('interaction', () => {
 	
 	beforeEach( () => {
 		rand = Math.floor((Math.random() * 8));	//random number 0 and 8
-		wrapper = shallow(<Board onClick={jest.fn()} />)
+		wrapper = mount(<Board squares={Array(9).fill(null)} onClick={jest.fn()} />)
 	})
 
 	describe('clicking any <Square />', () => {
@@ -28,7 +28,7 @@ describe('interaction', () => {
 			wrapper.find('Square').at(rand).prop('onClick')()
 		})
 		it('should call the onClick callback', () => {
-			expect(wrapper.find('Square').at(rand).prop('onClick')).toHaveBeenCalledTimes(1)
+			expect(wrapper.prop('onClick')).toHaveBeenCalledTimes(1)
 		})
 	})
 })
