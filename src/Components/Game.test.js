@@ -20,6 +20,9 @@ describe('interaction', () => {
 	beforeEach( () => {
 		wrapper = mount(<Game />)
 	})
+	afterEach( () => {
+		wrapper.unmount();
+	})
 
 	describe('clicking on <Board />', () => {
 		beforeEach( () => {
@@ -41,6 +44,12 @@ describe('interaction', () => {
 	        squares: Array(9).fill(null)
 	      }]
 			expect(wrapper.state('history')).toHaveLength(mockHistory.length + 1)
+		})
+
+		it('should check for winner', () => {
+			const calculateWinner = jest.spyOn(wrapper.instance(), 'calculateWinner');
+			wrapper.find('Square').at(0).simulate('click')
+			expect(calculateWinner).toHaveBeenCalled()
 		})
 	})
 })
