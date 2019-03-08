@@ -1,3 +1,5 @@
+# TIC-TAC-TOE
+
 Classic 2-player tic-tac-toe game created using React. Game features include:
 1. Prompts for player turns
 2. Rewinding of moves
@@ -7,7 +9,7 @@ Classic 2-player tic-tac-toe game created using React. Game features include:
 
 To initialize the game, you can:
 1. Download or clone repository.
-2. In the project directory, run:
+2. In the project directory, install the required dependencies by running:
 
 ### `npm install`
 
@@ -22,7 +24,7 @@ If the app does not open, navigate to [http://localhost:3000](http://localhost:3
 
 ### `npm test`
 
-Launches the test runner.<br>
+To launch the test runner and test the app.<br>
 There are 5 test suites (corresponding to the 5 app components) with a total of 17 tests.
 
 ### `npm run build`
