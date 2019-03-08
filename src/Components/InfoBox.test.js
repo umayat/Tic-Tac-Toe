@@ -27,4 +27,8 @@ describe('rendering', () => {
 
 		G.unmount();
 	})
+
+	it('should render a reset button', () => {
+		expect(wrapper.find('.resetBtn')).toHaveLength(1)
+	})
 })
