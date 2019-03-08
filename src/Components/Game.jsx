@@ -39,6 +39,13 @@ class Game extends React.Component {
 	}
 
 	/*
+   	Handles reversing moves. Allows rewinding of moves.
+  	*/
+  	handleTimeTravel(step) {
+
+  	}
+
+	/*
 		Calculate if there is winner.
 	*/
   	calculateWinner(squares) {
@@ -82,6 +89,7 @@ class Game extends React.Component {
 	        <div className="game-info">
 	        		<InfoBox
 		            history={history}
+		            onClick={ (i) => this.handleTimeTravel(i) }
           		/>
           	</div>
 	      </div>

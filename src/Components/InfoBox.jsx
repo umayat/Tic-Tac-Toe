@@ -10,7 +10,7 @@ const InfoBox = (props) => {
       const desc = moveIndex ? 'Go to move #' + moveIndex : 'Go to game start';
       return (
         	<li key={moveIndex}>
-         	<button className="timeTravel"><span>{desc}</span></button>
+         	<button className="timeTravel" onClick={ () => props.onClick(moveIndex) }><span>{desc}</span></button>
         	</li>
       )
    })
