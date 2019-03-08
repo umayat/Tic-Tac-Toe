@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Game from './Game';
 
 describe('rendering', () => {
@@ -10,5 +10,24 @@ describe('rendering', () => {
 
 	it('should render game board', () => {
 		expect(wrapper.find('Board')).toHaveLength(1)
+	})
+})
+
+describe('interaction', () => {
+	let wrapper;
+	
+	beforeEach( () => {
+		wrapper = mount(<Game />)
+	})
+
+	describe('clicking on <Board />', () => {
+		beforeEach( () => {
+			//simulate button click
+			wrapper.find('Square').at(0).simulate('click')
+		})
+
+		it('should render player symbol', () => {
+			expect(wrapper.find('Square').at(0).contains('X')).toBe(true)
+		})
 	})
 })
