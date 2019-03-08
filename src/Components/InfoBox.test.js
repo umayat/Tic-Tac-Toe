@@ -32,3 +32,26 @@ describe('rendering', () => {
 		expect(wrapper.find('.resetBtn')).toHaveLength(1)
 	})
 })
+
+describe('interaction', () => {
+	let wrapper;	
+	beforeEach( () => {
+		wrapper = mount(<InfoBox history={[]} onClick={jest.fn()} />)
+	})
+
+	describe('clicking on any time travel (history) button', () => {
+		beforeEach( () => {
+			wrapper.setProps({ 
+				history: [{
+        			squares: Array(9).fill(null)
+      		}] 
+   		});
+			//simulate button click
+			wrapper.find('.timeTravel').simulate('click')
+		})
+
+		it('should call the onClick callback', () => {
+			expect(wrapper.prop('onClick')).toHaveBeenCalledTimes(1)
+		})
+	})
+})
