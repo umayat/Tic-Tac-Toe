@@ -35,5 +35,12 @@ describe('interaction', () => {
 		it('should update next player status (allows taking turns)', () => {
 			expect(wrapper.state('next')).not.toEqual(next)
 		})
+
+		it('should update history', () => {
+			const mockHistory = [{
+	        squares: Array(9).fill(null)
+	      }]
+			expect(wrapper.state('history')).toHaveLength(mockHistory.length + 1)
+		})
 	})
 })
