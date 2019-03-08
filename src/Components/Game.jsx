@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Board from './Board';
+import InfoBox from './InfoBox';
 
 class Game extends React.Component {
 	constructor(props) {
@@ -68,10 +69,21 @@ class Game extends React.Component {
     	const current = history[this.state.stepNumber];
 
 		return (
-			<Board 
-				squares={current.squares} 
-				onClick={ (i) => this.handleClick(i) } 
-			/>
+			<div className="game">
+				
+				<div className="game-board">
+	         	<Board 
+	            	squares={current.squares} 
+	            	onClick={ (i) => this.handleClick(i) }
+	          	/>
+	        </div>
+
+	        <div className="game-info">
+	        		<InfoBox
+		            history={history}
+          		/>
+          	</div>
+	      </div>
 		)
 	} 
 }
