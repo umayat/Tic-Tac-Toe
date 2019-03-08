@@ -40,7 +40,12 @@ describe('rendering', () => {
 describe('interaction', () => {
 	let wrapper;	
 	beforeEach( () => {
-		wrapper = mount(<InfoBox history={[]} onClick={jest.fn()} />)
+		wrapper = mount(
+			<InfoBox history={[]} onClick={jest.fn()} onReset={jest.fn()} />
+		)
+	})
+	afterEach( () => {
+		wrapper.unmount();
 	})
 
 	describe('clicking on any time travel (history) button', () => {
@@ -56,6 +61,17 @@ describe('interaction', () => {
 
 		it('should call the onClick callback', () => {
 			expect(wrapper.prop('onClick')).toHaveBeenCalledTimes(1)
+		})
+	})
+
+	describe('clicking on reset button', () => {
+		beforeEach( () => {
+			//simulate button click
+			wrapper.find('.resetBtn').simulate('click')
+		})
+
+		it('should call the onReset callback', () => {
+			expect(wrapper.prop('onReset')).toHaveBeenCalledTimes(1)
 		})
 	})
 })
