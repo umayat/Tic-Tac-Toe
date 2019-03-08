@@ -52,4 +52,20 @@ describe('interaction', () => {
 			expect(calculateWinner).toHaveBeenCalled()
 		})
 	})
+
+
+	describe('clicking on any .timeTravel button', () => {
+		it('should rewind game to chosen step', () => {
+			const numMoves = 3;
+
+			for(let i=0; i<numMoves; i++) {
+				//simulate 3 moves taken by players
+				wrapper.find('Square').at(i).simulate('click')
+			}
+
+			//simulate rewinding game to beginning (move 0)
+			wrapper.find('.timeTravel').at(0).simulate('click')
+			expect(wrapper.state('stepNumber')).toEqual(0)
+		})
+	})
 })

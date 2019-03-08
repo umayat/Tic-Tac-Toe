@@ -3,8 +3,18 @@ import { shallow, mount } from 'enzyme';
 import Game from './Game';
 import InfoBox from './InfoBox';
 
-const getHistory = () => {
-	
+const stimulatePlayerMoves = (numMoves) => {
+	const G = mount(<Game />);
+	let mockHistory;
+
+	for(let i=0; i<numMoves; i++){
+		G.find('Square').at(i).simulate('click')
+	}
+
+	mockHistory = G.state('history');
+	G.unmount();
+
+	return mockHistory
 }
 
 describe('rendering', () => {
@@ -14,18 +24,12 @@ describe('rendering', () => {
 	})
 
 	it('should render game history', () => {
-		const G = mount(<Game />);
 		const numMoves = 3;
-
-		for(let i=0; i<numMoves; i++){
-			G.find('Square').at(i).simulate('click')
-		}
-
-		wrapper.setProps({ history: G.state('history') });
+		const mockHistory = stimulatePlayerMoves(numMoves);
+		
+		wrapper.setProps({ history: mockHistory });
 
 		expect(wrapper.find('.timeTravel')).toHaveLength(numMoves + 1)
-
-		G.unmount();
 	})
 
 	it('should render a reset button', () => {
