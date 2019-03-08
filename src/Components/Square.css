@@ -20,3 +20,18 @@
 .square:hover {
   background-color: rgba(0,0,0,0.1);
 }
+
+.red {
+  color: #e74c3c;
+}
+
+.blue {
+  color: #3498db;
+}
+
+@media only screen and (orientation: portrait) {
+  .square {
+    height: 25vw;
+    width: 25vw;
+  }
+}

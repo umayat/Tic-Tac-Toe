@@ -8,7 +8,7 @@ const stimulatePlayerMoves = (numMoves) => {
 	let mockHistory;
 
 	for(let i=0; i<numMoves; i++){
-		G.find('Square').at(i).simulate('click')
+		G.find('Square').at(i).simulate('click');
 	}
 
 	mockHistory = G.state('history');
@@ -17,10 +17,13 @@ const stimulatePlayerMoves = (numMoves) => {
 	return mockHistory
 }
 
+/*
+	Rendering Tests
+*/
 describe('rendering', () => {
 	let wrapper;	
 	beforeEach( () => {
-		wrapper = shallow(<InfoBox history={[]} />)
+		wrapper = shallow(<InfoBox history={[]} />);
 	})
 
 	it('should render game history', () => {
@@ -29,20 +32,23 @@ describe('rendering', () => {
 		
 		wrapper.setProps({ history: mockHistory });
 
-		expect(wrapper.find('.timeTravel')).toHaveLength(numMoves + 1)
+		expect(wrapper.find('.timeTravel')).toHaveLength(numMoves + 1);
 	})
 
 	it('should render a reset button', () => {
-		expect(wrapper.find('.resetBtn')).toHaveLength(1)
+		expect(wrapper.find('.resetBtn')).toHaveLength(1);
 	})
 })
 
+/*
+	Interaction Tests
+*/
 describe('interaction', () => {
 	let wrapper;	
 	beforeEach( () => {
 		wrapper = mount(
 			<InfoBox history={[]} onClick={jest.fn()} onReset={jest.fn()} />
-		)
+		);
 	})
 	afterEach( () => {
 		wrapper.unmount();
@@ -56,22 +62,22 @@ describe('interaction', () => {
       		}] 
    		});
 			//simulate button click
-			wrapper.find('.timeTravel').simulate('click')
+			wrapper.find('.timeTravel').simulate('click');
 		})
 
 		it('should call the onClick callback', () => {
-			expect(wrapper.prop('onClick')).toHaveBeenCalledTimes(1)
+			expect(wrapper.prop('onClick')).toHaveBeenCalledTimes(1);
 		})
 	})
 
 	describe('clicking on reset button', () => {
 		beforeEach( () => {
 			//simulate button click
-			wrapper.find('.resetBtn').simulate('click')
+			wrapper.find('.resetBtn').simulate('click');
 		})
 
 		it('should call the onReset callback', () => {
-			expect(wrapper.prop('onReset')).toHaveBeenCalledTimes(1)
+			expect(wrapper.prop('onReset')).toHaveBeenCalledTimes(1);
 		})
 	})
 })

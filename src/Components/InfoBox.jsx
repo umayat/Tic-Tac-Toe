@@ -17,6 +17,9 @@ const InfoBox = (props) => {
 
    return (
    	<center>
+   		<h2 className="subHeading">Next Player</h2>
+			<div className={"status " + props.colour}>{props.status}</div>
+	   	<h2 className="subHeading">Game History</h2>
 	   	<ol>{moves}</ol>
 	   	<button className="resetBtn" onClick={props.onReset}>Reset Game</button>
 	   </center>

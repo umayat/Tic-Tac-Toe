@@ -2,23 +2,29 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Game from './Game';
 
+/*
+	Rendering Tests
+*/
 describe('rendering', () => {
 	let wrapper;	
 	beforeEach( () => {
-		wrapper = shallow(<Game />)
+		wrapper = shallow(<Game />);
 	})
 
 	it('should render game board', () => {
-		expect(wrapper.find('Board')).toHaveLength(1)
+		expect(wrapper.find('Board')).toHaveLength(1);
 	})
 })
 
+/*
+	Interaction Tests
+*/
 describe('interaction', () => {
 	let next;
 	let wrapper;
 	
 	beforeEach( () => {
-		wrapper = mount(<Game />)
+		wrapper = mount(<Game />);
 	})
 	afterEach( () => {
 		wrapper.unmount();
@@ -28,28 +34,28 @@ describe('interaction', () => {
 		beforeEach( () => {
 			next = wrapper.state('next');
 			//simulate button click
-			wrapper.find('Square').at(0).simulate('click')
+			wrapper.find('Square').at(0).simulate('click');
 		})
 
 		it('should render player symbol', () => {
-			expect(wrapper.find('Square').at(0).contains('X')).toBe(true)
+			expect(wrapper.find('Square').at(0).contains('X')).toBe(true);
 		})
 
 		it('should update next player status (allows taking turns)', () => {
-			expect(wrapper.state('next')).not.toEqual(next)
+			expect(wrapper.state('next')).not.toEqual(next);
 		})
 
 		it('should update history', () => {
 			const mockHistory = [{
 	        squares: Array(9).fill(null)
 	      }]
-			expect(wrapper.state('history')).toHaveLength(mockHistory.length + 1)
+			expect(wrapper.state('history')).toHaveLength(mockHistory.length + 1);
 		})
 
 		it('should check for winner', () => {
 			const calculateWinner = jest.spyOn(wrapper.instance(), 'calculateWinner');
-			wrapper.find('Square').at(0).simulate('click')
-			expect(calculateWinner).toHaveBeenCalled()
+			wrapper.find('Square').at(0).simulate('click');
+			expect(calculateWinner).toHaveBeenCalled();
 		})
 	})
 
@@ -60,14 +66,15 @@ describe('interaction', () => {
 
 			for(let i=0; i<numMoves; i++) {
 				//simulate 3 moves taken by players
-				wrapper.find('Square').at(i).simulate('click')
+				wrapper.find('Square').at(i).simulate('click');
 			}
 
 			//simulate rewinding game to beginning (move 0)
-			wrapper.find('.timeTravel').at(0).simulate('click')
-			expect(wrapper.state('stepNumber')).toEqual(0)
+			wrapper.find('.timeTravel').at(0).simulate('click');
+			expect(wrapper.state('stepNumber')).toEqual(0);
 		})
 	})
+
 
 	describe('clicking on the reset button', () => {
 		it('should clear/reset game history', () => {
@@ -76,13 +83,13 @@ describe('interaction', () => {
 
 			for(let i=0; i<numMoves; i++) {
 				//simulate 3 moves taken by players
-				wrapper.find('Square').at(i).simulate('click')
+				wrapper.find('Square').at(i).simulate('click');
 			}
 
 			//simulate rewinding game to beginning (move 0)
-			wrapper.find('.resetBtn').simulate('click')
-			expect(wrapper.state('history')).toEqual(initialHistory)
-			expect(wrapper.state('stepNumber')).toEqual(0)
+			wrapper.find('.resetBtn').simulate('click');
+			expect(wrapper.state('history')).toEqual(initialHistory);
+			expect(wrapper.state('stepNumber')).toEqual(0);
 		})
 	})
 })

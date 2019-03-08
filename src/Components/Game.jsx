@@ -19,6 +19,9 @@ class Game extends React.Component {
 		}
 	}
 
+	/*
+		Handles player moves--clicks on game board.
+	*/
 	handleClick(i) {
 		const history = this.state.history.slice(0, this.state.stepNumber + 1);
 	   const current = history[history.length - 1];
@@ -64,7 +67,7 @@ class Game extends React.Component {
 	/*
 		Calculate if there is winner.
 	*/
-  	calculateWinner(squares) {
+  	calculateWinner(squares) { console.log(squares)
     	// Winning combinations
    	const lines = [
 	      [0,1,2],
@@ -91,6 +94,20 @@ class Game extends React.Component {
 	render() {
 		const history = this.state.history;
     	const current = history[this.state.stepNumber];
+    	const winner = this.calculateWinner(current.squares);
+    	let colour = 'black';
+    	let status;
+
+    	if(winner) {
+	      status = 'Winner: ' + winner;
+	   }
+	   else if(!current.squares.includes(null)) {
+	   	status = 'Tie Game';
+	   }
+	   else {
+	      status = this.state.next;
+	      colour = (this.state.next === 'X') ? 'red' : 'blue';
+    	}
 
 		return (
 			<div className="game">
@@ -100,10 +117,12 @@ class Game extends React.Component {
 	            	squares={current.squares} 
 	            	onClick={ (i) => this.handleClick(i) }
 	          	/>
-	        </div>
+	        	</div>
 
-	        <div className="game-info">
+	        	<div className="game-info">
 	        		<InfoBox
+	        			status={status}
+	        			colour={colour}
 		            history={history}
 		            onClick={ (i) => this.handleTimeTravel(i) }
 		            onReset={ () => this.handleReset() }
