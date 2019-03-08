@@ -32,7 +32,7 @@ describe('interaction', () => {
 			expect(wrapper.find('Square').at(0).contains('X')).toBe(true)
 		})
 
-		it('should update next player status', () => {
+		it('should update next player status (allows taking turns)', () => {
 			expect(wrapper.state('next')).not.toEqual(next)
 		})
 	})

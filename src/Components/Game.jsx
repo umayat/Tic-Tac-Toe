@@ -9,16 +9,18 @@ class Game extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			squares: Array(9).fill(null)
+			squares: Array(9).fill(null),
+			next: 'X'
 		}
 	}
 
 	handleClick(i) {
 		const squares = this.state.squares.slice();
-		squares[i] = 'X'
+		squares[i] = this.state.next;
 
 		this.setState({
-			squares: squares
+			squares: squares,
+			next: (this.state.next === 'X') ? 'O' : 'X'
 		})
 	}
 
