@@ -67,7 +67,7 @@ class Game extends React.Component {
 	/*
 		Calculate if there is winner.
 	*/
-  	calculateWinner(squares) { console.log(squares)
+  	calculateWinner(squares) {
     	// Winning combinations
    	const lines = [
 	      [0,1,2],
