@@ -42,7 +42,10 @@ class Game extends React.Component {
    	Handles reversing moves. Allows rewinding of moves.
   	*/
   	handleTimeTravel(step) {
-
+  		this.setState({
+	      stepNumber: step,
+	      next: ((step % 2) === 0) ? 'X' : 'O'
+	   })
   	}
 
 	/*
