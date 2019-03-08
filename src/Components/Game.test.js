@@ -68,4 +68,21 @@ describe('interaction', () => {
 			expect(wrapper.state('stepNumber')).toEqual(0)
 		})
 	})
+
+	describe('clicking on the reset button', () => {
+		it('should clear/reset game history', () => {
+			const initialHistory = wrapper.state('history');
+			const numMoves = 3;
+
+			for(let i=0; i<numMoves; i++) {
+				//simulate 3 moves taken by players
+				wrapper.find('Square').at(i).simulate('click')
+			}
+
+			//simulate rewinding game to beginning (move 0)
+			wrapper.find('.resetBtn').simulate('click')
+			expect(wrapper.state('history')).toEqual(initialHistory)
+			expect(wrapper.state('stepNumber')).toEqual(0)
+		})
+	})
 })
