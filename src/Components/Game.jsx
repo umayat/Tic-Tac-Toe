@@ -52,7 +52,13 @@ class Game extends React.Component {
    	Handles complete game reset. Resets initial state.
   	*/
   	handleReset() {
- 
+ 		this.setState({
+	      history: [{
+	        squares: Array(9).fill(null)
+	      }],
+      	next: 'X',
+      	stepNumber: 0
+    	})
   	}
 
 	/*
