@@ -3,6 +3,7 @@
 */
 
 import React from 'react';
+import './InfoBox.css';
 
 const InfoBox = (props) => {
 	const moves = props.history.map( (step, moveIndex) => {

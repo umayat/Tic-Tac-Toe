@@ -5,6 +5,7 @@
 import React from 'react';
 import Board from './Board';
 import InfoBox from './InfoBox';
+import './Game.css';
 
 class Game extends React.Component {
 	constructor(props) {

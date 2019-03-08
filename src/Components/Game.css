@@ -1,0 +1,14 @@
+.game {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.game-info {
+  border: 1px solid black;
+  padding: 0 40px;
+  margin: 15px;
+  background-color: rgba(0,0,0,0.05);
+  font-family: Arial, sans-serif;
+}
